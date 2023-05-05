@@ -15,6 +15,14 @@ const dayOuput = document.getElementById('output_day')
 
 const dataHoje = new Date()
 
+day.addEventListener('input', () => {
+    focusNext();
+})
+
+month.addEventListener('input', () => {
+    focusNext();
+})
+
 
 arrow.addEventListener('click', (e) => {
     errorMessageDay.innerText = ''
@@ -73,5 +81,15 @@ function calculaIdade(year, month, day) {
         dayOuput.textContent = 30 - (day - dataHoje.getDate())
     } else if (day < dataHoje.getDate() && month % 2 == 0 && (dataHoje.getMonth() + 1) !== 8) {
         dayOuput.textContent = - (day - dataHoje.getDate())
+    }
+}
+
+function focusNext() {
+    if (day.value.length === day.maxLength) {
+        month.focus();
+    }
+
+    if (month.value.length === month.maxLength) {
+        year.focus();
     }
 }
